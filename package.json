@@ -8,7 +8,7 @@
     "migrate": "prisma migrate dev --name init",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
     "seed": "prisma db seed --preview-feature",
-    "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
+    "dev": "ts-node-dev --transpile-only --no-notify api/server.ts",
     "build": "tsc"
   },
   "keywords": [],
