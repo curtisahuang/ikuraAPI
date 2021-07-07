@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Fish {
+  id                   String                 @id @default(cuid())
+  jpName               String
+  enName               String
+  notes                String?
+  cooked               Boolean                @default(false)
+  Fish_Characteristics Fish_Characteristics[]
+}
+
+model Fish_Characteristics {
+  char_id String  @id @default(uuid())
+  fish_id String
+  color1  String
+  color2  String?
+  texture String
+  family  String?
+  genus   String?
+  fish    Fish    @relation(fields: [fish_id], references: [id])
+}
