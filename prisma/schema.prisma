@@ -16,7 +16,7 @@ model Fish {
   enName               String
   notes                String?
   cooked               Boolean                @default(false)
-  Fish_Characteristics Fish_Characteristics[]
+  fish_characteristics Fish_Characteristics[]
 }
 
 model Fish_Characteristics {
@@ -24,8 +24,8 @@ model Fish_Characteristics {
   fish_id String
   color1  String
   color2  String?
-  texture String
+  texture String?
   family  String?
   genus   String?
-  fish    Fish    @relation(fields: [fish_id], references: [id])
+  fish    Fish?   @relation(fields: [fish_id], references: [id])
 }

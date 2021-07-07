@@ -1,21 +1,26 @@
 import { fishList }  from "./fishdata";
-import { PrismaClient } from ".prisma/client";
+import { PrismaClient, Prisma } from ".prisma/client";
 
 const prisma = new PrismaClient();
 
+const fishData = fishList;
+
 async function main() {
-    const deleteUsers = await prisma.fish.deleteMany({})
-    for (let aFish of fishList) {
-        await prisma.fish.create({
-            data: aFish
-        });
+    console.log(`Start Seeding`)
+    for (const f of fishData) {
+        const fish = await prisma.fish.create({
+            data: f,
+        })
+        console.log(`create fish with id: ${fish.id}`)
     }
-    // await prisma.fish.create({data: fish})
+    console.log(`Seeding Finished`)
 }
 
-main().catch(e => {
-    console.log(e);
-    process.exit(1);
-}).finally(() => {
-    prisma.$disconnect();
+main()
+    .catch(e => {
+        console.log(e);
+        process.exit(1);
+    })
+    .finally(async () => {
+        await prisma.$disconnect();
 })
