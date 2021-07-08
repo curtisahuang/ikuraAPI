@@ -5,7 +5,7 @@
       "sourceMap": true,
       "rootDir": ".",
       "outDir": "dist",
-      "strict": true,
+      "strict": false,
       "lib": ["esnext"],
       "esModuleInterop": true
     }

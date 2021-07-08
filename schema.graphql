@@ -5,12 +5,42 @@
 type Fish {
   cooked: Boolean!
   enName: String!
+  fishCharacteristics: [FishCharacteristics!]!
   id: String!
   jpName: String!
   notes: String!
 }
 
+type FishCharacteristics {
+  color1: String!
+  color2: String
+  family: String
+  genus: String
+  texture: String
+}
+
+input FishCharacteristicsCreateInput {
+  color1: String!
+  color2: String
+  family: String
+  genus: String
+  texture: String
+}
+
+input FishCreateInput {
+  cooked: Boolean!
+  enName: String!
+  fishCharacteristics: FishCharacteristicsCreateInput!
+  jpName: String!
+  notes: String
+}
+
+type Mutation {
+  createFish(data: FishCreateInput!): Fish!
+}
+
 type Query {
   allFish: [Fish!]!
-  fishByJpName(jpName: String): Fish!
+  findFishByEnglishName(enName: String): Fish
+  findFishByJapaneseName(jpName: String): Fish
 }

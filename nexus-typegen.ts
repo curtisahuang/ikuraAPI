@@ -14,6 +14,20 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  FishCharacteristicsCreateInput: { // input type
+    color1: string; // String!
+    color2?: string | null; // String
+    family?: string | null; // String
+    genus?: string | null; // String
+    texture?: string | null; // String
+  }
+  FishCreateInput: { // input type
+    cooked: boolean; // Boolean!
+    enName: string; // String!
+    fishCharacteristics: NexusGenInputs['FishCharacteristicsCreateInput']; // FishCharacteristicsCreateInput!
+    jpName: string; // String!
+    notes?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
@@ -35,6 +49,14 @@ export interface NexusGenObjects {
     jpName: string; // String!
     notes: string; // String!
   }
+  FishCharacteristics: { // root type
+    color1: string; // String!
+    color2?: string | null; // String
+    family?: string | null; // String
+    genus?: string | null; // String
+    texture?: string | null; // String
+  }
+  Mutation: {};
   Query: {};
 }
 
@@ -52,13 +74,25 @@ export interface NexusGenFieldTypes {
   Fish: { // field return type
     cooked: boolean; // Boolean!
     enName: string; // String!
+    fishCharacteristics: NexusGenRootTypes['FishCharacteristics'][]; // [FishCharacteristics!]!
     id: string; // String!
     jpName: string; // String!
     notes: string; // String!
   }
+  FishCharacteristics: { // field return type
+    color1: string; // String!
+    color2: string | null; // String
+    family: string | null; // String
+    genus: string | null; // String
+    texture: string | null; // String
+  }
+  Mutation: { // field return type
+    createFish: NexusGenRootTypes['Fish']; // Fish!
+  }
   Query: { // field return type
     allFish: NexusGenRootTypes['Fish'][]; // [Fish!]!
-    fishByJpName: NexusGenRootTypes['Fish']; // Fish!
+    findFishByEnglishName: NexusGenRootTypes['Fish'] | null; // Fish
+    findFishByJapaneseName: NexusGenRootTypes['Fish'] | null; // Fish
   }
 }
 
@@ -66,19 +100,39 @@ export interface NexusGenFieldTypeNames {
   Fish: { // field return type name
     cooked: 'Boolean'
     enName: 'String'
+    fishCharacteristics: 'FishCharacteristics'
     id: 'String'
     jpName: 'String'
     notes: 'String'
   }
+  FishCharacteristics: { // field return type name
+    color1: 'String'
+    color2: 'String'
+    family: 'String'
+    genus: 'String'
+    texture: 'String'
+  }
+  Mutation: { // field return type name
+    createFish: 'Fish'
+  }
   Query: { // field return type name
     allFish: 'Fish'
-    fishByJpName: 'Fish'
+    findFishByEnglishName: 'Fish'
+    findFishByJapaneseName: 'Fish'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createFish: { // args
+      data: NexusGenInputs['FishCreateInput']; // FishCreateInput!
+    }
+  }
   Query: {
-    fishByJpName: { // args
+    findFishByEnglishName: { // args
+      enName?: string | null; // String
+    }
+    findFishByJapaneseName: { // args
       jpName?: string | null; // String
     }
   }
@@ -92,7 +146,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 
