@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 const fishData = fishList;
 
 async function main() {
+    const deleteUsers = await prisma.fish.deleteMany({})
     console.log(`Start Seeding`)
     for (const f of fishData) {
         const fish = await prisma.fish.create({

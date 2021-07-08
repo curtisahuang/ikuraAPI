@@ -28,6 +28,13 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Fish: { // root type
+    cooked: boolean; // Boolean!
+    enName: string; // String!
+    id: string; // String!
+    jpName: string; // String!
+    notes: string; // String!
+  }
   Query: {};
 }
 
@@ -42,18 +49,39 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Fish: { // field return type
+    cooked: boolean; // Boolean!
+    enName: string; // String!
+    id: string; // String!
+    jpName: string; // String!
+    notes: string; // String!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    allFish: NexusGenRootTypes['Fish'][]; // [Fish!]!
+    fishByJpName: NexusGenRootTypes['Fish']; // Fish!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Fish: { // field return type name
+    cooked: 'Boolean'
+    enName: 'String'
+    id: 'String'
+    jpName: 'String'
+    notes: 'String'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    allFish: 'Fish'
+    fishByJpName: 'Fish'
   }
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    fishByJpName: { // args
+      jpName?: string | null; // String
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {

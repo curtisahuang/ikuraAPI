@@ -2,6 +2,15 @@
 ### Do not make changes to this file directly
 
 
+type Fish {
+  cooked: Boolean!
+  enName: String!
+  id: String!
+  jpName: String!
+  notes: String!
+}
+
 type Query {
-  ok: Boolean!
+  allFish: [Fish!]!
+  fishByJpName(jpName: String): Fish!
 }

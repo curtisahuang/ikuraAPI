@@ -8,8 +8,51 @@ export const fishList = [
             create: [
                 {
                     color1: "red",
+                    texture: "firm",
                     family: "Scombridae",
                     genus: "Thunnus"
+                }
+            ]
+        }
+    },
+    {
+        jpName: "saumon",
+        enName: "salmon",
+        notes: "refers to a wide variety of fish",
+        cooked: false,
+        fish_characteristics: {
+            create: [
+                {
+                    color1: "orange",
+                    texture: "firm"
+                }
+            ]
+        }
+    },
+    {
+        jpName: "uni",
+        enName: "sea urchin",
+        notes: "refers to a wide variety of spikey bottom feeding echinoderms",
+        cooked: false,
+        fish_characteristics: {
+            create: [
+                {
+                    color1: "yellow",
+                    texture: "soft"
+                }
+            ]
+        }
+    },
+    {
+        jpName: "unagi",
+        enName: "freshwater eel",
+        notes: "poisonous unless cooked, often served with a sweet sauce",
+        cooked: true,
+        fish_characteristics: {
+            create: [
+                {
+                    color1: "brown",
+                    texture: "soft"
                 }
             ]
         }
@@ -17,40 +60,6 @@ export const fishList = [
 ]
 
 // export const fishList = [
-//     {
-//         jpName: "maguro",
-//         enName: "tuna",
-//         color: "red",
-//         texture: "soft",
-//         notes: "the leanest tuna cut",
-//         cooked: false,
-//     },
-//     {
-//         jpName: "saumon",
-//         enName: "salmon",
-//         color: "orange",
-//         texture: "soft",
-//         notes: "delicious",
-//         cooked: false,
-//     },
-//     {
-//         jpName: "uni",
-//         enName: "sea urchin",
-//         color: "yellow",
-//         texture: "soft",
-//         notes: "smooth like butter",
-//         cooked: false,
-//     },
-//     {
-//         jpName: "unagi",
-//         enName: "freshwater eel",
-//         color: "brown",
-//         texture: "soft",
-//         notes: "typically Anguilla japonica",
-//         cooked: true,
-//         family: "Anguillidae",
-//         genus: "Anguilla",
-//     },
 //     {
 //         jpName: "tamago",
 //         enName: "egg",
