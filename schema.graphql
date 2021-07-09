@@ -27,6 +27,14 @@ input FishCharacteristicsCreateInput {
   texture: String
 }
 
+input FishCharacteristicsUpdateInput {
+  color1: String
+  color2: String
+  family: String
+  genus: String
+  texture: String
+}
+
 input FishCreateInput {
   cooked: Boolean!
   enName: String!
@@ -35,12 +43,25 @@ input FishCreateInput {
   notes: String
 }
 
+input FishUpdateInput {
+  cooked: Boolean
+  enName: String
+  fishCharacteristics: FishCharacteristicsUpdateInput
+  jpName: String
+  notes: String
+}
+
 type Mutation {
   createFish(data: FishCreateInput!): Fish!
+  deleteFishById(id: String!): Fish
+  updateById(id: String!, updateData: FishUpdateInput!): Fish
 }
 
 type Query {
   allFish: [Fish!]!
+  findFishByColor(color: String): [Fish!]!
   findFishByEnglishName(enName: String): Fish
   findFishByJapaneseName(jpName: String): Fish
+  findFishByPreparation(cooked: Boolean): [Fish!]!
+  findFishByTexture(texture: String): [Fish!]!
 }

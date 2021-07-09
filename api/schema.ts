@@ -1,5 +1,5 @@
 import { toIdValue } from "apollo-utilities";
-import { makeSchema, objectType, nonNull, stringArg, arg, inputObjectType } from "nexus";
+import { makeSchema, objectType, nonNull, stringArg, arg, inputObjectType, booleanArg } from "nexus";
 import { join } from "path";
 import { isAnyArrayBuffer } from "util/types";
 import { Context } from "./context"
@@ -32,10 +32,67 @@ const Query = objectType({
                 enName: stringArg()
             },
             resolve: (_parent, args, context: Context) => {
-                return context.prisma.fish.findFirst({
+                const result = context.prisma.fish.findFirst({
                     where: { enName: args.enName || undefined},
                 })
+                console.dir(result);
+                return result;
             },
+        })
+
+        t.nonNull.list.nonNull.field("findFishByPreparation", {
+            type: "Fish",
+            args: { 
+                cooked: booleanArg()
+            },
+            resolve: async (_parent, args, context: Context) => {
+                const result = await context.prisma.fish.findMany({
+                    where: { cooked: args.cooked }
+                })
+                console.log(result)
+                return result;
+            },
+        })
+
+        t.nonNull.list.nonNull.field("findFishByColor", {
+            type: "Fish",
+            args: {
+                color: stringArg()
+            },
+            resolve: async (_parent, args, context: Context) => {
+                const result = await context.prisma.fish.findMany({
+                    where: {
+                        fish_characteristics: {
+                            some: {
+                                OR: [
+                                    {color1: args.color},
+                                    {color2: args.color}
+                                ]
+                            }
+                        }
+                    }
+                })
+                return result;
+            }
+        })
+
+        t.nonNull.list.nonNull.field("findFishByTexture", {
+            type: "Fish",
+            args: {
+                texture: stringArg()
+            },
+            resolve: async (_parent, args, context: Context) => {
+                const result = await context.prisma.fish.findMany({
+                    where: {
+                        fish_characteristics: {
+                            some: {
+                                texture: args.texture
+                            }
+                        }
+                    }
+                })
+                return result;
+            }
         })
     }
 })
@@ -53,13 +110,6 @@ const Mutation = objectType({
                 ),
             },
             resolve: (_, args, context: Context) => {
-                const fishDetails = {
-                    color1: args.data.fishCharacteristics.color1,
-                    color2: args.data.fishCharacteristics.color2 || null,
-                    texture: args.data.fishCharacteristics.texture || null,
-                    family: args.data.fishCharacteristics.family || null,
-                    genus: args.data.fishCharacteristics.genus || null,
-                }
                 return context.prisma.fish.create({
                     data: {
                         jpName: args.data.jpName,
@@ -67,11 +117,51 @@ const Mutation = objectType({
                         cooked: args.data.cooked,
                         notes: args.data.notes || null,
                         fish_characteristics: {
-                            create: fishDetails,
+                            create: {
+                                color1: args.data.fishCharacteristics.color1,
+                                color2: args.data.fishCharacteristics.color2 || null,
+                                texture: args.data.fishCharacteristics.texture || null,
+                                family: args.data.fishCharacteristics.family || null,
+                                genus: args.data.fishCharacteristics.genus || null,
+                            },
                         },
                     },
                 })
             },
+        })
+
+        t.field("updateById", {
+            type: "Fish",
+            args: {
+                id: nonNull(stringArg()),
+                updateData: nonNull(FishUpdateInput)
+            },
+            resolve: async (_, args, context: Context) => {
+                try {
+                    return context.prisma.fish.update({
+                        where: { id: args.id || undefined },
+                        data: {
+                            
+                        }
+                    })
+                } catch (e) {
+                    throw new Error(
+                        `Fish with ID ${args.id} does not exist in the database.`,
+                    )
+                }
+            }
+        })
+
+        t.field("deleteFishById", {
+            type:"Fish",
+            args: {
+                id: nonNull(stringArg()),
+            },
+            resolve: (_, args, context: Context) => {
+                return context.prisma.fish.delete({
+                    where: { id: args.id },
+                })
+            }
         })
     },
 })
@@ -130,6 +220,28 @@ const FishCreateInput = inputObjectType({
     }
 })
 
+const FishCharacteristicsUpdateInput = inputObjectType({
+    name: "FishCharacteristicsUpdateInput",
+    definition(t) {
+        t.string('color1')
+        t.string("color2")
+        t.string("texture")
+        t.string("family")
+        t.string("genus")
+    }
+})
+
+const FishUpdateInput = inputObjectType({
+    name:"FishUpdateInput",
+    definition(t) {
+        t.string("jpName")
+        t.string("enName")
+        t.string("notes")
+        t.boolean("cooked")
+        t.field("fishCharacteristics", { type: "FishCharacteristicsUpdateInput" })
+    }
+})
+
 export const schema = makeSchema({
     types: [
         Query,
@@ -137,7 +249,9 @@ export const schema = makeSchema({
         Fish,
         FishCharacteristicsCreateInput,
         FishCharacteristics,
-        FishCreateInput
+        FishCreateInput,
+        FishCharacteristicsUpdateInput,
+        FishUpdateInput,
     ],
     outputs: {
         typegen: join(__dirname, "..", "nexus-typegen.ts"),
