@@ -2,7 +2,7 @@ export const fishList = [
     {
         jpName: "maguro",
         kanaName: "まぐろ",
-        kanjiName: null,
+        kanjiName: "鮪",
         enName: "tuna",
         notes: "the leanest tuna cut",
         cooked: false,
@@ -57,9 +57,9 @@ export const fishList = [
         }
     },
     {
-        jpName: "saumon",
-        kanaName: "サウモン",
-        kanjiName: null,
+        jpName: "sake",
+        kanaName: "さけ",
+        kanjiName: "鮭",
         enName: "salmon",
         notes: "refers to a wide variety of orange fish",
         cooked: false,
@@ -185,8 +185,8 @@ export const fishList = [
     },
     {
         jpName: "sanma",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "さんま",
+        kanjiName: "秋刀魚",
         enName: "pacific saury",
         notes: "an autumn specialty, quite oily, a smaller fish",
         cooked: false,
@@ -204,9 +204,9 @@ export const fishList = [
     },
     {
         jpName: "kanpachi",
-        kanaName: null,
-        kanjiName: null,
-        enName: "amberjack",
+        kanaName: "かんぱち",
+        kanjiName: "勘八",
+        enName: "greater amberjack",
         notes: "mid-maturity amberjack, common in early summer to autumn",
         cooked: false,
         fish_characteristics: {
@@ -223,8 +223,8 @@ export const fishList = [
     },
     {
         jpName: "buri",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "ぶり",
+        kanjiName: "鰤",
         enName: "amberjack",
         notes: "adult amberjack",
         cooked: false,
@@ -242,8 +242,8 @@ export const fishList = [
     },
     {
         jpName: "katsuo",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "かつお",
+        kanjiName: "鰹",
         enName: "bonito",
         notes: "medium-sized fish",
         cooked: false,
@@ -254,15 +254,15 @@ export const fishList = [
                     color2: "purple",
                     texture: "firm",
                     family: "Scombridae",
-                    genus: null
+                    genus: "Katsuwonus"
                 }
             ]
         }
     },
     {
         jpName: "engawa",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "えんがわ",
+        kanjiName: "縁側",
         enName: "flouder tail fin",
         notes: "buttery taste, chewy texture. it's the muscle that moves the fins. There's only 4 pieces per fish!",
         cooked: false,
@@ -280,8 +280,8 @@ export const fishList = [
     },
     {
         jpName: "kohada",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "こはだ",
+        kanjiName: "小肌",
         enName: "gizzard shad",
         notes: "often marinated in vinegar, also commonly scored",
         cooked: false,
@@ -291,16 +291,16 @@ export const fishList = [
                     color1: "silver",
                     color2: null,
                     texture: "firm",
-                    family: null,
-                    genus: null
+                    family: "Clupeidae",
+                    genus: "Konosirus"
                 }
             ]
         }
     },
     {
         jpName: "tai",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "たい",
+        kanjiName: "鯛",
         enName: "sea bream",
         notes: "low in fat, delicate and sweet",
         cooked: false,
@@ -318,8 +318,8 @@ export const fishList = [
     },
     {
         jpName: "tako",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "たこ",
+        kanjiName: "蛸",
         enName: "octopus",
         notes: "usually blanched, sometimes marinated and massaged",
         cooked: true,
@@ -337,8 +337,8 @@ export const fishList = [
     },
     {
         jpName: "geso",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "げそ",
+        kanjiName: "下足",
         enName: "squid tentacles",
         notes: "can be served grilled or raw",
         cooked: false,
@@ -356,8 +356,8 @@ export const fishList = [
     },
     {
         jpName: "ika",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "いか",
+        kanjiName: "烏賊",
         enName: "squid mantle",
         notes: "the squid head, so to speak, usually scored. Great with a shiso leaf",
         cooked: false,
@@ -375,8 +375,8 @@ export const fishList = [
     },
     {
         jpName: "hotate",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "ほたて",
+        kanjiName: "帆立",
         enName: "scallop",
         notes: "sweet and soft, often butterflied",
         cooked: false,
@@ -394,8 +394,8 @@ export const fishList = [
     },
     {
         jpName: "kazunoko",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "かずのこ",
+        kanjiName: "鯑",
         enName: "herring roe",
         notes: "usually picked in salt or sun dried",
         cooked: false,
@@ -413,8 +413,8 @@ export const fishList = [
     },
     {
         jpName: "hokkigai",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "ほっきがい",
+        kanjiName: "北寄貝",
         enName: "surf clam",
         notes: "can be served grilled or raw",
         cooked: false,
@@ -451,8 +451,8 @@ export const fishList = [
     },
     {
         jpName: "amaebi",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "あまえび",
+        kanjiName: "甘海老",
         enName: "sweet shrimp",
         notes: "also with tail, shiny or slightly transluscent",
         cooked: false,
@@ -489,8 +489,8 @@ export const fishList = [
     },
     {
         jpName: "ankimo",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "あんきも",
+        kanjiName: "鮟肝",
         enName: "monkfish liver",
         notes: "the liver of a bottom feeding monkfish, steamed in sake and water",
         cooked: true,
@@ -508,8 +508,8 @@ export const fishList = [
     },
     {
         jpName: "awabi",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "あわび",
+        kanjiName: "鮑",
         enName: "abalone",
         notes: "marine snails, can be served both raw and cooked",
         cooked: false,
@@ -527,8 +527,8 @@ export const fishList = [
     },
     {
         jpName: "ikura",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "いくら",
+        kanjiName: "イクラ",
         enName: "salmon roe",
         notes: "the eggs of a salmon",
         cooked: false,
@@ -546,8 +546,8 @@ export const fishList = [
     },
     {
         jpName: "tobiko",
-        kanaName: null,
-        kanjiName: null,
+        kanaName: "とびこ",
+        kanjiName: "飛子",
         enName: "flying fish roe",
         notes: "the eggs of flying fish, often confused up with masago, which is slightly smaller and less crunchy",
         cooked: false,
@@ -565,7 +565,7 @@ export const fishList = [
     },
     {
         jpName: "masago",
-        kanaName: null,
+        kanaName: "まさご",
         kanjiName: null,
         enName: "capelin roe",
         notes: "the eggs of capelin, often a substitute for tobiko, which is slightly larger and more crunchy",
@@ -584,10 +584,10 @@ export const fishList = [
     },
     {
         jpName: "negitoro",
-        kanaName: "ネギトロ",
-        kanjiName: null,
-        enName: "green onion with minced tuna",
-        notes: "mixed with green onions and chopped up but still delicious",
+        kanaName: "ねぎとろ",
+        kanjiName: "葱トロ",
+        enName: "welsh onion with minced tuna",
+        notes: "mixed with welsh onions and chopped up. Typically cheaper because of lower quality cuts, but delicious still",
         cooked: false,
         fish_characteristics: {
             create: [
@@ -602,67 +602,3 @@ export const fishList = [
         }
     },
 ]
-
-// export const fishList = [
-//     {
-//         jpName: "tamago",
-//         enName: "egg",
-//         color: "yellow",
-//         texture: "firm",
-//         notes: "Often mixed with sake, mirin, sugar, and/or soy sauce",
-//         cooked: true,
-//     },
-//     {
-//         jpName: "ika",
-//         enName: "squid",
-//         color: "white",
-//         texture: "chewy",
-//         notes: "specific, squid mantle, which is the head part",
-//         cooked: false,
-//     },
-//     {
-//         jpName: "anago",
-//         enName: "saltwater eel",
-//         color: "brown",
-//         texture: "soft",
-//         notes: "commonly from the genus Conger",
-//         cooked: true,
-//         family: "Congridae",
-//         genus: "Conger"
-//     },
-//     {
-//         jpName: "hotate",
-//         enName: "scallop",
-//         color: "white",
-//         texture: "soft",
-//         notes: "wide range of species eaten",
-//         cooked: false,
-//         family: "Pectinidae"
-//     },
-//     {
-//         jpName: "aji",
-//         enName: "horse mackerel",
-//         color: "red",
-//         texture: "soft",
-//         notes: "often cured with vinegar/ Best Season: Summer",
-//         cooked: false,
-//         family: "Carangidae"
-//     },
-//     {
-//         jpName: "sanma",
-//         enName: "mackerel pike",
-//         color: "brown, pink",
-//         texture: "soft",
-//         notes: "also known as Pacific Saury. Best Season: Fall",
-//         cooked: false,
-//         family: "Scomberesocidae"
-//     },
-//     {
-//         jpName: "saba",
-//         enName: "mackerel",
-//         color: "red",
-//         texture: "soft",
-//         notes: "usually cured with vinegar, also known as the chub, or Pacific Chub Mackerel. Best Season: Fall",
-//         cooked: true,
-//     },
-// ]
