@@ -10,11 +10,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
+/// Testing if this shows up on FISH
 model Fish {
   id                   String                 @id @default(cuid())
   jpName               String
   enName               String
-  notes                String?
+  notes                String?                /// TESTING IF THIS SHOWS UP ON NOTES
   cooked               Boolean                @default(false)
   fish_characteristics Fish_Characteristics[]
 }

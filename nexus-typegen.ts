@@ -21,25 +21,11 @@ export interface NexusGenInputs {
     genus?: string | null; // String
     texture?: string | null; // String
   }
-  FishCharacteristicsUpdateInput: { // input type
-    color1?: string | null; // String
-    color2?: string | null; // String
-    family?: string | null; // String
-    genus?: string | null; // String
-    texture?: string | null; // String
-  }
   FishCreateInput: { // input type
     cooked: boolean; // Boolean!
     enName: string; // String!
     fishCharacteristics: NexusGenInputs['FishCharacteristicsCreateInput']; // FishCharacteristicsCreateInput!
     jpName: string; // String!
-    notes?: string | null; // String
-  }
-  FishUpdateInput: { // input type
-    cooked?: boolean | null; // Boolean
-    enName?: string | null; // String
-    fishCharacteristics?: NexusGenInputs['FishCharacteristicsUpdateInput'] | null; // FishCharacteristicsUpdateInput
-    jpName?: string | null; // String
     notes?: string | null; // String
   }
 }
@@ -103,7 +89,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createFish: NexusGenRootTypes['Fish']; // Fish!
     deleteFishById: NexusGenRootTypes['Fish'] | null; // Fish
-    updateById: NexusGenRootTypes['Fish'] | null; // Fish
+    updateNotesById: NexusGenRootTypes['Fish'] | null; // Fish
   }
   Query: { // field return type
     allFish: NexusGenRootTypes['Fish'][]; // [Fish!]!
@@ -134,7 +120,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createFish: 'Fish'
     deleteFishById: 'Fish'
-    updateById: 'Fish'
+    updateNotesById: 'Fish'
   }
   Query: { // field return type name
     allFish: 'Fish'
@@ -154,9 +140,9 @@ export interface NexusGenArgTypes {
     deleteFishById: { // args
       id: string; // String!
     }
-    updateById: { // args
+    updateNotesById: { // args
       id: string; // String!
-      updateData: NexusGenInputs['FishUpdateInput']; // FishUpdateInput!
+      updateNotes?: string | null; // String
     }
   }
   Query: {

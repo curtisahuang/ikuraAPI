@@ -130,25 +130,19 @@ const Mutation = objectType({
             },
         })
 
-        t.field("updateById", {
+        t.field("updateNotesById", {
             type: "Fish",
             args: {
                 id: nonNull(stringArg()),
-                updateData: nonNull(FishUpdateInput)
+                updateNotes: stringArg()
             },
             resolve: async (_, args, context: Context) => {
-                try {
-                    return context.prisma.fish.update({
-                        where: { id: args.id || undefined },
-                        data: {
-                            
-                        }
-                    })
-                } catch (e) {
-                    throw new Error(
-                        `Fish with ID ${args.id} does not exist in the database.`,
-                    )
-                }
+                return context.prisma.fish.update({
+                    where: { id: args.id || undefined },
+                    data: {
+                        notes: args.updateNotes
+                    }
+                })
             }
         })
 
@@ -220,27 +214,27 @@ const FishCreateInput = inputObjectType({
     }
 })
 
-const FishCharacteristicsUpdateInput = inputObjectType({
-    name: "FishCharacteristicsUpdateInput",
-    definition(t) {
-        t.string('color1')
-        t.string("color2")
-        t.string("texture")
-        t.string("family")
-        t.string("genus")
-    }
-})
+// const FishCharacteristicsUpdateInput = inputObjectType({
+//     name: "FishCharacteristicsUpdateInput",
+//     definition(t) {
+//         t.string('color1')
+//         t.string("color2")
+//         t.string("texture")
+//         t.string("family")
+//         t.string("genus")
+//     }
+// })
 
-const FishUpdateInput = inputObjectType({
-    name:"FishUpdateInput",
-    definition(t) {
-        t.string("jpName")
-        t.string("enName")
-        t.string("notes")
-        t.boolean("cooked")
-        t.field("fishCharacteristics", { type: "FishCharacteristicsUpdateInput" })
-    }
-})
+// const FishUpdateInput = inputObjectType({
+//     name:"FishUpdateInput",
+//     definition(t) {
+//         t.string("jpName")
+//         t.string("enName")
+//         t.string("notes")
+//         t.boolean("cooked")
+//         t.field("fishCharacteristics", { type: "FishCharacteristicsUpdateInput" })
+//     }
+// })
 
 export const schema = makeSchema({
     types: [
@@ -250,8 +244,8 @@ export const schema = makeSchema({
         FishCharacteristicsCreateInput,
         FishCharacteristics,
         FishCreateInput,
-        FishCharacteristicsUpdateInput,
-        FishUpdateInput,
+        // FishCharacteristicsUpdateInput,
+        // FishUpdateInput,
     ],
     outputs: {
         typegen: join(__dirname, "..", "nexus-typegen.ts"),
