@@ -27,6 +27,7 @@
     "apollo-server": "^2.25.2",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
-    "nexus": "^1.1.0"
+    "nexus": "^1.1.0",
+    "prisma-docs-generator": "^0.4.0"
   }
 }

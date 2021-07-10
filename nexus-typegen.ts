@@ -26,6 +26,8 @@ export interface NexusGenInputs {
     enName: string; // String!
     fishCharacteristics: NexusGenInputs['FishCharacteristicsCreateInput']; // FishCharacteristicsCreateInput!
     jpName: string; // String!
+    kanaName?: string | null; // String
+    kanjiName?: string | null; // String
     notes?: string | null; // String
   }
 }
@@ -47,6 +49,8 @@ export interface NexusGenObjects {
     enName: string; // String!
     id: string; // String!
     jpName: string; // String!
+    kanaName?: string | null; // String
+    kanjiName?: string | null; // String
     notes: string; // String!
   }
   FishCharacteristics: { // root type
@@ -77,6 +81,8 @@ export interface NexusGenFieldTypes {
     fishCharacteristics: NexusGenRootTypes['FishCharacteristics'][]; // [FishCharacteristics!]!
     id: string; // String!
     jpName: string; // String!
+    kanaName: string | null; // String
+    kanjiName: string | null; // String
     notes: string; // String!
   }
   FishCharacteristics: { // field return type
@@ -95,8 +101,10 @@ export interface NexusGenFieldTypes {
     allFish: NexusGenRootTypes['Fish'][]; // [Fish!]!
     findFishByColor: NexusGenRootTypes['Fish'][]; // [Fish!]!
     findFishByEnglishName: NexusGenRootTypes['Fish'] | null; // Fish
-    findFishByJapaneseName: NexusGenRootTypes['Fish'] | null; // Fish
+    findFishByKana: NexusGenRootTypes['Fish'] | null; // Fish
+    findFishByKanji: NexusGenRootTypes['Fish'] | null; // Fish
     findFishByPreparation: NexusGenRootTypes['Fish'][]; // [Fish!]!
+    findFishByRomaji: NexusGenRootTypes['Fish'] | null; // Fish
     findFishByTexture: NexusGenRootTypes['Fish'][]; // [Fish!]!
   }
 }
@@ -108,6 +116,8 @@ export interface NexusGenFieldTypeNames {
     fishCharacteristics: 'FishCharacteristics'
     id: 'String'
     jpName: 'String'
+    kanaName: 'String'
+    kanjiName: 'String'
     notes: 'String'
   }
   FishCharacteristics: { // field return type name
@@ -126,8 +136,10 @@ export interface NexusGenFieldTypeNames {
     allFish: 'Fish'
     findFishByColor: 'Fish'
     findFishByEnglishName: 'Fish'
-    findFishByJapaneseName: 'Fish'
+    findFishByKana: 'Fish'
+    findFishByKanji: 'Fish'
     findFishByPreparation: 'Fish'
+    findFishByRomaji: 'Fish'
     findFishByTexture: 'Fish'
   }
 }
@@ -152,11 +164,17 @@ export interface NexusGenArgTypes {
     findFishByEnglishName: { // args
       enName?: string | null; // String
     }
-    findFishByJapaneseName: { // args
-      jpName?: string | null; // String
+    findFishByKana: { // args
+      kanaName?: string | null; // String
+    }
+    findFishByKanji: { // args
+      kanjiName?: string | null; // String
     }
     findFishByPreparation: { // args
       cooked?: boolean | null; // Boolean
+    }
+    findFishByRomaji: { // args
+      jpName?: string | null; // String
     }
     findFishByTexture: { // args
       texture?: string | null; // String

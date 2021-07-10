@@ -8,6 +8,8 @@ type Fish {
   fishCharacteristics: [FishCharacteristics!]!
   id: String!
   jpName: String!
+  kanaName: String
+  kanjiName: String
   notes: String!
 }
 
@@ -32,6 +34,8 @@ input FishCreateInput {
   enName: String!
   fishCharacteristics: FishCharacteristicsCreateInput!
   jpName: String!
+  kanaName: String
+  kanjiName: String
   notes: String
 }
 
@@ -45,7 +49,9 @@ type Query {
   allFish: [Fish!]!
   findFishByColor(color: String): [Fish!]!
   findFishByEnglishName(enName: String): Fish
-  findFishByJapaneseName(jpName: String): Fish
+  findFishByKana(kanaName: String): Fish
+  findFishByKanji(kanjiName: String): Fish
   findFishByPreparation(cooked: Boolean): [Fish!]!
+  findFishByRomaji(jpName: String): Fish
   findFishByTexture(texture: String): [Fish!]!
 }

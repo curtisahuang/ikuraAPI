@@ -14,7 +14,7 @@ const Query = objectType({
             },
         })
 
-        t.nullable.field("findFishByJapaneseName", {
+        t.nullable.field("findFishByRomaji", {
             type: "Fish",
             args: {
                 jpName: stringArg()
@@ -22,6 +22,31 @@ const Query = objectType({
             resolve: (_parent, args, context: Context) => {
                 return context.prisma.fish.findFirst({
                     where: { jpName: args.jpName || undefined},
+                })
+            },
+        })
+
+
+        t.nullable.field("findFishByKana", {
+            type: "Fish",
+            args: {
+                kanaName: stringArg()
+            },
+            resolve: (_parent, args, context: Context) => {
+                return context.prisma.fish.findFirst({
+                    where: { kanaName: args.kanaName || undefined},
+                })
+            },
+        })
+
+        t.nullable.field("findFishByKanji", {
+            type: "Fish",
+            args: {
+                kanjiName: stringArg()
+            },
+            resolve: (_parent, args, context: Context) => {
+                return context.prisma.fish.findFirst({
+                    where: { kanjiName: args.kanjiName || undefined},
                 })
             },
         })
@@ -114,6 +139,8 @@ const Mutation = objectType({
                     data: {
                         jpName: args.data.jpName,
                         enName: args.data.enName,
+                        kanaName: args.data.kanaName || null,
+                        kanjiName: args.data.kanjiName || null,
                         cooked: args.data.cooked,
                         notes: args.data.notes || null,
                         fish_characteristics: {
@@ -165,6 +192,8 @@ const Fish = objectType({
     definition(t) {
         t.nonNull.string('id')
         t.nonNull.string('jpName')
+        t.string('kanaName')
+        t.string('kanjiName')                
         t.nonNull.string('enName')
         t.nonNull.string("notes")
         t.nonNull.boolean("cooked")
@@ -207,6 +236,8 @@ const FishCreateInput = inputObjectType({
     name:"FishCreateInput",
     definition(t) {
         t.nonNull.string("jpName")
+        t.nullable.string("kanaName")
+        t.nullable.string("kanjiName")
         t.nonNull.string("enName")
         t.nullable.string("notes")
         t.nonNull.boolean("cooked")

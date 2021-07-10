@@ -10,12 +10,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
-/// Testing if this shows up on FISH
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
+
+/// The fish model
 model Fish {
   id                   String                 @id @default(cuid())
-  jpName               String
+  jpName               String                 /// This is the name of the fish in romaji
+  kanaName             String?                /// Please update when there is time
+  kanjiName            String?                /// Please update when there is time
   enName               String
-  notes                String?                /// TESTING IF THIS SHOWS UP ON NOTES
+  notes                String?                
   cooked               Boolean                @default(false)
   fish_characteristics Fish_Characteristics[]
 }
