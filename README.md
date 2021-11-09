@@ -1,4 +1,4 @@
-This was created during my time as a student at Code Chrysalis
+This was created during my time at Code Chrysalis
 
 The .env file contains the following values (change user and password):
 *****
